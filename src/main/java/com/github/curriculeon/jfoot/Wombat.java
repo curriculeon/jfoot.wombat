@@ -19,14 +19,21 @@ public class Wombat extends Herbivore {
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
-        } else if (this.canMove()) {
+        }
+        if (this.canMove()) {
             this.move();
         } else {
-            this.turnLeft();
+            if(this.getDirection().equals(EAST)) {
+                this.leftMoveLeft();
+            } else if(this.getDirection().equals(WEST)) {
+                this.rightMoveRight();
+            }
         }
     }
 
     public void turnLeft() {
+        System.out.println("turnLeft");
+        System.out.println("Current Direction " + getDirection());
         if (this.getDirection() == EAST) {
             this.setDirection(NORTH);
         } else if (this.getDirection() == WEST) {
@@ -36,5 +43,33 @@ public class Wombat extends Herbivore {
         } else {
             this.setDirection(EAST);
         }
+        System.out.println("New Direction " + getDirection());
+    }
+
+    private void turnRight() {
+        System.out.println("turnRight");
+        System.out.println("Current Direction " + getDirection());
+        if (this.getDirection() == EAST) {
+            this.setDirection(SOUTH);
+        } else if (this.getDirection() == WEST) {
+            this.setDirection(NORTH);
+        } else if (this.getDirection() == NORTH) {
+            this.setDirection(EAST);
+        } else {
+            this.setDirection(WEST);
+        }
+        System.out.println("New Direction " + getDirection());
+    }
+
+    public void leftMoveLeft() {
+        turnLeft();
+        move();
+        turnLeft();
+    }
+
+    public void rightMoveRight() {
+        turnRight();
+        move();
+        turnRight();
     }
 }

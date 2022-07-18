@@ -15,16 +15,45 @@ public class Wombat extends Herbivore {
     public Wombat() {
         setImage("wombat.png");
     }
-
+//boolean northWest = (getDirection() == NORTH) && (getDirection() == WEST);
+    //boolean northEast = (getDirection() == NORTH) && (getDirection() == EAST);
+    //boolean southWest = (getDirection() == SOUTH) && (getDirection() == WEST);
+    //boolean southEast = (getDirection() == SOUTH) && (getDirection() == EAST);
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
         } else if (this.canMove()) {
             this.move();
-        } else {
+        }
+
+        // this.turnLeft();
+        if (!this.canMove() && this.getDirection() == WEST ) {
+            this.turnLeft();
+            this.move();
+            this.turnLeft();
+            //this.turnNorth();
+        }
+        if (!this.canMove() && this.getDirection() == EAST) {
+            this.turnRight();
+            this.move();
+            this.turnSouth();
+        }
+        //spin around u dumbass Wombat
+        if (!this.canMove() && this.getDirection() == NORTH) {
+           this.turnLeft();
+           this.move();
+            //this.turnSouth();
             this.turnLeft();
         }
+
+        if (!this.canMove() && this.getDirection() == SOUTH) {
+          this.turnRight();
+          this.move();
+          //this.turnNorth();
+            this.turnRight();
+        }
     }
+
 
     public void turnLeft() {
         if (this.getDirection() == EAST) {
@@ -37,4 +66,36 @@ public class Wombat extends Herbivore {
             this.setDirection(EAST);
         }
     }
-}
+        public void turnRight() {
+            if (this.getDirection() == EAST) {
+                this.setDirection(SOUTH);
+            } else if (this.getDirection() == WEST) {
+                this.setDirection(NORTH);
+            } else if (this.getDirection() == NORTH) {
+                this.setDirection(EAST);
+            } else {
+                this.setDirection(WEST);
+            }
+        }
+    public void turnNorth() {
+        if (this.getDirection() == EAST) {
+            this.setDirection(NORTH);
+        } else if (this.getDirection() == WEST) {
+            this.setDirection(NORTH);
+        } else if (this.getDirection() == NORTH) {
+            this.setDirection(EAST);
+
+        }
+    }
+    public void turnSouth() {
+        if (this.getDirection() == EAST) {
+            this.setDirection(SOUTH);
+        } else if (this.getDirection() == WEST) {
+            this.setDirection(SOUTH);
+        } else if (this.getDirection() == SOUTH) {
+            this.setDirection(NORTH);
+        }
+    }
+    }
+
+

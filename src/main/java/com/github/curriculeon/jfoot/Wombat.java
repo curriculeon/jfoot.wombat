@@ -15,10 +15,25 @@ public class Wombat extends Herbivore {
     public Wombat() {
         setImage("wombat.png");
     }
-//boolean northWest = (getDirection() == NORTH) && (getDirection() == WEST);
-    //boolean northEast = (getDirection() == NORTH) && (getDirection() == EAST);
-    //boolean southWest = (getDirection() == SOUTH) && (getDirection() == WEST);
-    //boolean southEast = (getDirection() == SOUTH) && (getDirection() == EAST);
+
+    public boolean isAtLeftBorder() {
+        return getX() == 0;
+    }
+    public boolean isAtTopBorder() {
+        return getY() == 0;
+    }
+
+    public boolean isAtRightBorder() {
+        return getX() == 9;
+    }
+    public boolean isAtBottomBorder() {
+        return getY() == 9;
+    }
+
+    public boolean atTopCorner() {
+        return isAtLeftBorder() && isAtTopBorder();
+    }
+
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
@@ -26,27 +41,28 @@ public class Wombat extends Herbivore {
             this.move();
         }
 
-        // this.turnLeft();
-        if (!this.canMove() && this.getDirection() == WEST ) {
+        if (atTopCorner()){
+            this.turnRight();
+            this.move();
+        }
+        else if (!this.canMove() && this.getDirection() == WEST ) {
             this.turnLeft();
             this.move();
             this.turnLeft();
-            //this.turnNorth();
-        }
+
+        }else
         if (!this.canMove() && this.getDirection() == EAST) {
             this.turnRight();
             this.move();
             this.turnSouth();
-        }
-        //spin around u dumbass Wombat
+        }else
+
         if (!this.canMove() && this.getDirection() == NORTH) {
            this.turnLeft();
            this.move();
             //this.turnSouth();
             this.turnLeft();
-        }
-
-        if (!this.canMove() && this.getDirection() == SOUTH) {
+        } else if (!this.canMove() && this.getDirection() == SOUTH) {
           this.turnRight();
           this.move();
           //this.turnNorth();
@@ -78,12 +94,8 @@ public class Wombat extends Herbivore {
             }
         }
     public void turnNorth() {
-        if (this.getDirection() == EAST) {
+        if (this.getDirection() != NORTH) {
             this.setDirection(NORTH);
-        } else if (this.getDirection() == WEST) {
-            this.setDirection(NORTH);
-        } else if (this.getDirection() == NORTH) {
-            this.setDirection(EAST);
 
         }
     }

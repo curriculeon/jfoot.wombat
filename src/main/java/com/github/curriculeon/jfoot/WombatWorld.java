@@ -27,6 +27,7 @@ public class WombatWorld extends World {
         addObject(new Wombat(), 6, 6);
         addObject(new Wombat(), 1, 7);
         randomLeaves(20);
+ 
     }
 
     /**

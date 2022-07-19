@@ -30,9 +30,10 @@ public class Wombat extends Herbivore {
         return getY() == 9;
     }
 
-    public boolean atTopCorner() {
+    public boolean atTopLeftCorner() {
         return isAtLeftBorder() && isAtTopBorder();
     }
+    public boolean atBottomLeftCorner() {return isAtLeftBorder() && isAtBottomBorder(); }
 
     public void act() {
         if (this.foundLeaf()) {
@@ -41,31 +42,57 @@ public class Wombat extends Herbivore {
             this.move();
         }
 
-        if (atTopCorner()){
+        if (atBottomLeftCorner()){
+            this.turnRight();
+            this.move();
+        }
+        if (atTopLeftCorner()){
             this.turnRight();
             this.move();
         }
         else if (!this.canMove() && this.getDirection() == WEST ) {
             this.turnLeft();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.move();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.turnLeft();
 
         }else
         if (!this.canMove() && this.getDirection() == EAST) {
             this.turnRight();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.move();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.turnSouth();
         }else
 
         if (!this.canMove() && this.getDirection() == NORTH) {
            this.turnLeft();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
            this.move();
-            //this.turnSouth();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.turnLeft();
         } else if (!this.canMove() && this.getDirection() == SOUTH) {
           this.turnRight();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
           this.move();
-          //this.turnNorth();
+            if (this.foundLeaf()) {
+                this.eatLeaf();
+            }
             this.turnRight();
         }
     }

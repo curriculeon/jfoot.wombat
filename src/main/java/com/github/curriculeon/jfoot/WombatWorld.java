@@ -26,20 +26,28 @@ public class WombatWorld extends World {
         addObject(new Wombat(), 7, 1);
         addObject(new Wombat(), 6, 6);
         addObject(new Wombat(), 1, 7);
-        randomLeaves(20);
- 
+        //randomLeaves(20);
+
+
+
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y <= 10; y++) {
+                addObject(new Leaf(),x ,y);
+            }
+            //addObject(new Leaf(),x ,y);
+        }
     }
 
     /**
      * Place a number of leaves into the world at random places.
      * The number of leaves can be specified.
      */
-    public void randomLeaves(int howMany) {
-        for (int i = 0; i < howMany; i++) {
-            Leaf leaf = new Leaf();
-            int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight());
-            addObject(leaf, x, y);
-        }
-    }
+    //public void randomLeaves(int howMany) {
+     //   for (int i = 0; i < howMany; i++) {
+       //     Leaf leaf = new Leaf();
+       //     int x = Greenfoot.getRandomNumber(getWidth());
+       //     int y = Greenfoot.getRandomNumber(getHeight());
+        //    addObject(leaf, x, y);
+       // }
+  //  }
 }

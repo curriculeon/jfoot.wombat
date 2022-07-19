@@ -30,8 +30,8 @@ public class WombatWorld extends World {
 
 
 
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y <= 10; y++) {
+        for (int x = 0; x <= this.getWidth(); x++) {
+            for (int y = 0; y <= this.getHeight(); y++) {
                 addObject(new Leaf(),x ,y);
             }
             //addObject(new Leaf(),x ,y);

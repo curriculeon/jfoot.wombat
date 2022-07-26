@@ -30,7 +30,7 @@ public class WombatWorld extends World {
      * Populate the world with a fixed scenario of wombats and leaves.
      */
     public void populate() {
-        addObject(new Wombat(), 0, 10);
+        addObject(new Wombat(), 0, getHeight());
         populateLeavesEverywhere();
     }
 

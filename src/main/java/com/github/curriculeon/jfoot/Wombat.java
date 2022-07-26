@@ -49,8 +49,6 @@ public class Wombat extends Herbivore {
     }
 
     public void turnLeft() {
-        System.out.println("turnLeft");
-        System.out.println("Current Direction " + getDirection());
         if (this.getDirection() == EAST) {
             this.setDirection(NORTH);
         } else if (this.getDirection() == WEST) {
@@ -60,12 +58,9 @@ public class Wombat extends Herbivore {
         } else {
             this.setDirection(EAST);
         }
-        System.out.println("New Direction " + getDirection());
     }
 
     private void turnRight() {
-        System.out.println("turnRight");
-        System.out.println("Current Direction " + getDirection());
         if (this.getDirection() == EAST) {
             this.setDirection(SOUTH);
         } else if (this.getDirection() == WEST) {
@@ -75,7 +70,6 @@ public class Wombat extends Herbivore {
         } else {
             this.setDirection(WEST);
         }
-        System.out.println("New Direction " + getDirection());
     }
 
     public void leftMoveLeft() {

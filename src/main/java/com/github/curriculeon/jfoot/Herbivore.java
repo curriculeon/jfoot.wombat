@@ -20,7 +20,7 @@ public abstract class Herbivore extends Actor {
     /**
      * Move one step forward.
      */
-    public final void move() {
+    public void move() {
         move(1);
     }
 
@@ -54,6 +54,7 @@ public abstract class Herbivore extends Actor {
     }
 
     public final void setDirection(Direction direction) {
+        System.out.println("setDirection(" +direction +")");
         this.direction = direction;
         setDirection(direction.ordinal());
     }

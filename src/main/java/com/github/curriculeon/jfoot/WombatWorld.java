@@ -1,5 +1,6 @@
 package com.github.curriculeon.jfoot;
 
+import com.github.git_leon.RandomUtils;
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
 
 /**
@@ -19,14 +20,26 @@ public class WombatWorld extends World {
         setPaintOrder(Wombat.class, Leaf.class);  // draw wombat on top of leaf
     }
 
+    public void act() {
+        if(RandomUtils.createBoolean(3)) {
+            randomLeaves(15);
+        }
+    }
+
     /**
      * Populate the world with a fixed scenario of wombats and leaves.
      */
     public void populate() {
-//        addObject(new Wombat(), 7, 1);
-//        addObject(new Wombat(), 6, 6);
-        addObject(new Wombat(), 1, 7);
-        randomLeaves(20);
+        addObject(new Wombat(), 0, 10);
+        populateLeavesEverywhere();
+    }
+
+    public void populateLeavesEverywhere() {
+        for(int i=0; i<getWidth(); i++) {
+            for(int j=0; j<getHeight(); j++) {
+                addObject(new Leaf(), i, j);
+            }
+        }
     }
 
     /**

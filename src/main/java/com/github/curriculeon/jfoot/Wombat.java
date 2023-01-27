@@ -30,6 +30,14 @@ public class Wombat extends Herbivore {
             this.move();
             this.turnRight();
         }
+
+        if(!canMove() && isAtTopEdge()){
+            this.move();
+            if(this.foundLeaf()) this.eatLeaf();
+            this.turnLeft();
+            for(int i = 0; i < 10; i++) this.move();
+            this.turnLeft();
+        }
     }
 
     public void turnLeft() {

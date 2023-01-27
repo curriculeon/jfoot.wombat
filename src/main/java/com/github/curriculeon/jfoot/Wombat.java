@@ -26,15 +26,40 @@ public class Wombat extends Herbivore {
         }
     }
 
+    public void nextLine(){
+        if (this.getDirection() == EAST){
+            this.turnLeft();
+            this.move();
+            this.turnLeft();
+        }
+        if (this.getDirection() == WEST){
+            this.turnRight();
+            this.move();
+            this.turnRight();
+        }
+    }
+
     public void turnLeft() {
         if (this.getDirection() == EAST) {
             this.setDirection(NORTH);
-        } else if (this.getDirection() == WEST) {
-            this.setDirection(SOUTH);
         } else if (this.getDirection() == NORTH) {
             this.setDirection(WEST);
+        } else if (this.getDirection() == WEST) {
+            this.setDirection(SOUTH);
         } else {
             this.setDirection(EAST);
+        }
+    }
+
+    public void turnRight() {
+        if (this.getDirection() == NORTH) {
+            this.setDirection(EAST);
+        } else if (this.getDirection() == EAST) {
+            this.setDirection(SOUTH);
+        } else if (this.getDirection() == SOUTH) {
+            this.setDirection(WEST);
+        } else {
+            this.setDirection(NORTH);
         }
     }
 }

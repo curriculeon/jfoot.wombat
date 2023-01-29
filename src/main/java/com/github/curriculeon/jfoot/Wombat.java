@@ -21,8 +21,12 @@ public class Wombat extends Herbivore {
             this.eatLeaf();
         } else if (this.canMove()) {
             this.move();
-        } else {
-            this.turnLeft();
+        }
+        else if (!this.isAtTopEdge()){
+            this.nextLine();
+        }
+        else{
+            this.Origin();
         }
     }
 
@@ -32,11 +36,22 @@ public class Wombat extends Herbivore {
             this.move();
             this.turnLeft();
         }
-        if (this.getDirection() == WEST){
+        else if (this.getDirection() == WEST){
             this.turnRight();
             this.move();
             this.turnRight();
         }
+    }
+
+    public void Origin(){
+        this.turnLeft();
+        /*
+        while (!this.isAtBottomEdge()){
+            this.move();
+        }
+        this.turnLeft();
+         */
+
     }
 
     public void turnLeft() {

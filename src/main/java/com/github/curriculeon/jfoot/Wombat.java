@@ -15,18 +15,50 @@ public class Wombat extends Herbivore {
     public Wombat() {
         setImage("wombat.png");
     }
-
+    boolean left_next = true;
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
         } else if (this.canMove()) {
             this.move();
-        } else {
+        } else if (left_next==true){
+                this.turnLeft();
+                this.move();
+                this.turnLeft();
+                left_next=false;
+        } else if (left_next==false){
             this.turnLeft();
+            this.turnLeft();
+            this.turnLeft();
+            this.move();
+            this.turnLeft();
+            this.turnLeft();
+            this.turnLeft();
+            left_next=true;
+
         }
     }
+    /* ACT psudeo code
+    boolean left=true
+    if found leaf:
+        eat
+    else if can move:
+        move
+    else:
+        if left = true
+            turn left
+            move once
+            turn left
+            left =false
+        else:
+            turn left three times //(right turn)
+            move 1
+            turn left three times //(right turn)
+            left = true
+     */
 
-    public void turnLeft() {
+
+    public void turnLeft() { //next : take int for repetitions
         if (this.getDirection() == EAST) {
             this.setDirection(NORTH);
         } else if (this.getDirection() == WEST) {

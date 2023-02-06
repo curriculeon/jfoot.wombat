@@ -15,7 +15,7 @@ public class MainApplication {
         WombatWorld world = new WombatWorld();
         world.populate();
         Greenfoot.setWorld(world);
-        Greenfoot.setSpeed(50);
+        Greenfoot.setSpeed(40);
         WorldHandler.getInstance().getWorld();
     }
 }

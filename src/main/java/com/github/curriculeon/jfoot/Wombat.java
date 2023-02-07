@@ -17,7 +17,7 @@ public class Wombat extends Herbivore {
     }
 
     public void turnRight() {
-        if (getDirection() == EAST ) {
+        if (getDirection() == EAST) {
             setDirection(SOUTH);
         } else if(getDirection() == WEST ) {
             setDirection(NORTH);
@@ -35,11 +35,11 @@ public class Wombat extends Herbivore {
         } else if (this.canMove()) {
             this.move();
         } else {
-            if(getDirection() == EAST ) {
+            if(getDirection() == EAST) {
                 turnLeft();
                 move();
                 turnLeft();
-            } else if (getDirection() == WEST ) {
+            } else if (getDirection() == WEST) {
                 turnRight();
                 move();
                 turnRight();
@@ -49,11 +49,11 @@ public class Wombat extends Herbivore {
 
     // I just used the same parameters from turnRight()...gotta work smarter not harder
     public void turnLeft() {
-        if (this.getDirection() == EAST ) {
+        if (this.getDirection() == EAST) {
             this.setDirection(NORTH);
-        } else if (this.getDirection() == WEST ) {
+        } else if (this.getDirection() == WEST) {
             this.setDirection(SOUTH);
-        } else if (this.getDirection() == NORTH ) {
+        } else if (this.getDirection() == NORTH) {
             this.setDirection(WEST);
         } else {
             this.setDirection(EAST);

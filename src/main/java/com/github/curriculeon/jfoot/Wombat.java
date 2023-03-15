@@ -16,16 +16,38 @@ public class Wombat extends Herbivore {
         setImage("wombat.png");
     }
 
+    public void turnRight() {
+        if (getDirection() == EAST) {
+            setDirection(SOUTH);
+        } else if(getDirection() == WEST ) {
+            setDirection(NORTH);
+        } else if (getDirection() == NORTH ) {
+            setDirection(EAST);
+        } else  {
+            setDirection(WEST);
+        }
+    }
+
+    // turn right is dependent on the direction of the wombat
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
         } else if (this.canMove()) {
             this.move();
         } else {
-            this.turnLeft();
+            if(getDirection() == EAST) {
+                turnLeft();
+                move();
+                turnLeft();
+            } else if (getDirection() == WEST) {
+                turnRight();
+                move();
+                turnRight();
+            }
         }
     }
 
+    // I just used the same parameters from turnRight()...gotta work smarter not harder
     public void turnLeft() {
         if (this.getDirection() == EAST) {
             this.setDirection(NORTH);

@@ -16,25 +16,50 @@ public class Wombat extends Herbivore {
         setImage("wombat.png");
     }
 
-    String previousLine = "EAST";
-
     public void act() {
-        if (this.foundLeaf()) {
+        if (this.foundLeaf()) { //Found leaf
             this.eatLeaf();
-        } else if (this.canMove()) {
+        } else if (this.canMove()) { //No leaf is found & can move
             this.move();
-        } else {
-            if (previousLine.equals("EAST")){
+        } else { //No leaf found & can't move
+            if (this.getDirection() == EAST){
                 this.turnLeft();
-                previousLine = "WEST";
+                this.move();
+                this.turnLeft();
             }
-            else {
+            else if (this.getDirection() == WEST) {
                 this.turnRight();
-                previousLine = "EAST";
+                this.move();
+                this.turnRight();
+            }
+
+            if(isAtTopLeft()){
+                this.setDirection(SOUTH);
+            }
+
+            if(isAtBottomLeft()){
+                this.setDirection(EAST);
             }
 
         }
     }
+
+    private Boolean canMove(Direction direction) {
+        Direction originalDirection = this.getDirection();
+        setDirection(direction);
+        boolean canMove = canMove();
+        setDirection(originalDirection);
+        return canMove;
+    }
+
+    private Boolean isAtTopLeft() {
+        return !canMove(NORTH) && !canMove(WEST);
+    }
+
+    private Boolean isAtBottomLeft(){
+        return !canMove(SOUTH) && canMove(EAST);
+    }
+
 
     public void turnLeft() {
         if (this.getDirection() == EAST) {

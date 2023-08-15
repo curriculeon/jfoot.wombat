@@ -2,6 +2,8 @@ package com.github.curriculeon.jfoot;
 
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
 
+import java.util.List;
+
 /**
  * A world where wombats live.
  *
@@ -25,6 +27,14 @@ public class WombatWorld extends World {
     public void populate() {
         addObject(new Wombat(), 0, getHeight());
         randomLeaves(100);
+    }
+
+    @Override
+    public void act(){
+        List<Leaf> list = getObjects(Leaf.class);
+        if(list.size() < 10){
+            randomLeaves(100);
+        }
     }
 
     /**

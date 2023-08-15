@@ -16,13 +16,23 @@ public class Wombat extends Herbivore {
         setImage("wombat.png");
     }
 
+    String previousLine = "EAST";
+
     public void act() {
         if (this.foundLeaf()) {
             this.eatLeaf();
         } else if (this.canMove()) {
             this.move();
         } else {
-            this.turnLeft();
+            if (previousLine.equals("EAST")){
+                this.turnLeft();
+                previousLine = "WEST";
+            }
+            else {
+                this.turnRight();
+                previousLine = "EAST";
+            }
+
         }
     }
 

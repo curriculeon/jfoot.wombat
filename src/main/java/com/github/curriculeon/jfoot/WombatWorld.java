@@ -2,6 +2,8 @@ package com.github.curriculeon.jfoot;
 
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
 
+import java.util.List;
+
 /**
  * A world where wombats live.
  *
@@ -25,6 +27,18 @@ public class WombatWorld extends World {
     public void populate() {
         addObject(new Wombat(), 0, getHeight());
         randomLeaves(100);
+    }
+
+    //This method is used to repopulate leaves on the grid
+    @Override
+    public void act(){
+        //The amount of Leaf objects on the grid is polled
+        List<Leaf> list = getObjects(Leaf.class);
+        //If the size of the list is below 10 (less than 10 leaves on the grid)
+        if(list.size() < 10){
+            //Add 100 leaves to the grid using the randomLeaves method
+            randomLeaves(100);
+        }
     }
 
     /**
